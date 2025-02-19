@@ -15,7 +15,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.josh.compose.components.layout.MyTexts
+import com.josh.compose.components.layout.MyButtons
+import com.josh.compose.components.layout.MyTextFieldParent
 import com.josh.compose.ui.theme.BasicComposeAppTheme
 
 class MainActivity : ComponentActivity() {
@@ -26,7 +27,8 @@ class MainActivity : ComponentActivity() {
         setContent {
             BasicComposeAppTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    MyTexts(Modifier.padding(innerPadding))
+                    MyButtons(Modifier.padding(innerPadding)) //sec6
+                   // MyTextFieldParent(Modifier.padding(innerPadding))
                 //) MyState2_20(Modifier.padding(innerPadding))
                     //MyState2_19(Modifier.padding(innerPadding))
                     //ConstraintChain(Modifier.padding(innerPadding))                //ConstraintAdvancedGuide(Modifier.padding(innerPadding))

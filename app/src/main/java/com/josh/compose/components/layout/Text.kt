@@ -17,7 +17,7 @@ import androidx.compose.ui.unit.sp
 
 
 @Composable
-fun MyTexts(modifier: Modifier) {
+fun MyText(modifier: Modifier) {
     Column(modifier = modifier) {
         Text(text = "Pepe")
         Text(text = "Pepe rojo", color = Color.Red)
