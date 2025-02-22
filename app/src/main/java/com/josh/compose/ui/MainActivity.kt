@@ -34,10 +34,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.josh.compose.components.layout.MyButtonExample
 import com.josh.compose.components.layout.MyOutlinedTextField
 import com.josh.compose.components.layout.MyText
 import com.josh.compose.components.layout.MyTextFieldAdvanced
 import com.josh.compose.components.layout.MyTextFieldOutlined
+import com.josh.compose.components.layout.MyTextFieldStateHoisting
 import com.josh.compose.components.layout.MyTextField_10_52
 import com.josh.compose.ui.theme.BasicComposeAppTheme
 
@@ -52,11 +54,20 @@ class MainActivity : ComponentActivity() {
                     Column( modifier = Modifier.fillMaxSize()) {
                         MySpacer(30)
 
+                        // 12.57
+                        MyButtonExample()
+
+                        // 11.55 State Hoisting
+                        // var myText by rememberSaveable { mutableStateOf("") }
+                        // MyTextFieldStateHoisting(myText) { myText = it }
+
+                        /*
                         MyTextFieldOutlined()   // 10.54
                         MyTextFieldAdvanced()   // 10.53
                         MyTextField_10_52()     // 10.52
                         // MyText(Modifier.padding(innerPadding)) // 10.51
-                        // MyStateExample()  // 9.x
+                        // MyStateExample()  // 9.x                      
+                         */
 
                         // MyComplexLayout() //8.38
                         // MyRow() //8.37

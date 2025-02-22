@@ -28,6 +28,13 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 
+
+// 10.55
+@Composable
+fun MyTextFieldStateHoisting(name: String, onValueChange: (String) -> Unit) {
+    TextField(value = name, onValueChange = { onValueChange(it)} )
+}
+
 // 10.54
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -50,6 +57,9 @@ fun MyTextFieldOutlined() {
 // 10.53
 @Composable
 fun MyTextFieldAdvanced() {
+    // 11.55
+    // Works for now, but is too much responsibility,
+    // the composable should be Stateless
     var myText by rememberSaveable { mutableStateOf("Advanced Josh") }
     TextField(
         value = myText,
@@ -67,6 +77,11 @@ fun MyTextFieldAdvanced() {
 // 10.52
 @Composable
 fun MyTextField_10_52() {
+    // 11.55
+    // Works for now, but is too much responsibility,
+    // the composable should be Stateless
+    // State Hoisting is a pattern that extracts state from Composables,
+    // and moves it to a superior member
     var myText by rememberSaveable { mutableStateOf("Josh") }
     TextField(value = myText, onValueChange = {myText = it})
 }
