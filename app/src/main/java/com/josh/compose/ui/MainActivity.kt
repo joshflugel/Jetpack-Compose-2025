@@ -51,9 +51,9 @@ import com.josh.compose.components.layout.MyDivider
 import com.josh.compose.components.layout.MyDropdownMenu
 import com.josh.compose.components.layout.MyRadioButton
 import com.josh.compose.components.layout.MyRadioButtonList
-import com.josh.compose.components.layout.MySwitch
-import com.josh.compose.components.layout.MyTriStatusCheckBox
-import com.josh.compose.components.layout.getCheckboxListOfIngredients
+import com.josh.compose.components.layout.MyRangeSlider
+import com.josh.compose.components.layout.MySliderAdvanced
+import com.josh.compose.components.layout.MySliderBasic
 import com.josh.compose.ui.theme.BasicComposeAppTheme
 
 class MainActivity : ComponentActivity() {
@@ -65,15 +65,21 @@ class MainActivity : ComponentActivity() {
             BasicComposeAppTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     Column( modifier = Modifier.fillMaxSize()) {
-
                         MySpacer(45)
 
+                        Text("17) Slider Component")
+                        MyRangeSlider()
+                        MySliderAdvanced()
+                        MySliderBasic()
+
+                        /*
                         Text("16) Other Components")  // 16) Other Components
                         MyDropdownMenu()
                         MyBadgeBox()
                         MyDivider()
                         Text("Card:")
                         MyCard()
+                         */
 
                         /*
                         Column() {
