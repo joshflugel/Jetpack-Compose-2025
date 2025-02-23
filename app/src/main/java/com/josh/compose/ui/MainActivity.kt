@@ -63,13 +63,15 @@ class MainActivity : ComponentActivity() {
                     Column( modifier = Modifier.fillMaxSize()) {
                         MySpacer(30)
 
-                        var selected by rememberSaveable { mutableStateOf("Beef") }
-                        MyRadioButtonList(selected) { selected = it }
 
-                        val ingredients = listOf("Bacon", "Cheese", "Pickles", "BBQ")
-                        val checkboxListOfIngredients = getCheckboxListOfIngredients(ingredients)
                         Column() {
                             Text("15) Selection Control Components")
+
+                            var selected by rememberSaveable { mutableStateOf("Beef") }
+                            MyRadioButtonList(selected) { selected = it }
+
+                            val ingredients = listOf("Bacon", "Cheese", "Pickles", "BBQ")
+                            val checkboxListOfIngredients = getCheckboxListOfIngredients(ingredients)
 
                             MyRadioButton()
                             MyTriStatusCheckBox()
