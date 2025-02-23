@@ -42,9 +42,13 @@ import androidx.compose.ui.graphics.Color.Companion.Red
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.josh.compose.components.layout.CheckInfo
+import com.josh.compose.components.layout.MyBadgeBox
+import com.josh.compose.components.layout.MyCard
 import com.josh.compose.components.layout.MyCheckbox
 import com.josh.compose.components.layout.MyCheckboxWithText
 import com.josh.compose.components.layout.MyCheckboxWithTextAdvanced
+import com.josh.compose.components.layout.MyDivider
+import com.josh.compose.components.layout.MyDropdownMenu
 import com.josh.compose.components.layout.MyRadioButton
 import com.josh.compose.components.layout.MyRadioButtonList
 import com.josh.compose.components.layout.MySwitch
@@ -61,9 +65,17 @@ class MainActivity : ComponentActivity() {
             BasicComposeAppTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     Column( modifier = Modifier.fillMaxSize()) {
-                        MySpacer(30)
 
+                        MySpacer(45)
 
+                        Text("16) Other Components")  // 16) Other Components
+                        MyDropdownMenu()
+                        MyBadgeBox()
+                        MyDivider()
+                        Text("Card:")
+                        MyCard()
+
+                        /*
                         Column() {
                             Text("15) Selection Control Components")
 
@@ -82,6 +94,7 @@ class MainActivity : ComponentActivity() {
                             MyCheckbox()
                             MySwitch()
                         }
+                         */
 
                         // 14.64 ProgressBarAdvanced
                         // MyProgressBarAdvanced()
