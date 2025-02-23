@@ -20,27 +20,36 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.Star
 import androidx.compose.material3.Button
+import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.Icon
+import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Color.Companion.DarkGray
+import androidx.compose.ui.graphics.Color.Companion.Green
+import androidx.compose.ui.graphics.Color.Companion.Red
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.josh.compose.components.layout.MyButtonExample
-import com.josh.compose.components.layout.MyOutlinedTextField
-import com.josh.compose.components.layout.MyText
-import com.josh.compose.components.layout.MyTextFieldAdvanced
-import com.josh.compose.components.layout.MyTextFieldOutlined
-import com.josh.compose.components.layout.MyTextFieldStateHoisting
-import com.josh.compose.components.layout.MyTextField_10_52
+import com.josh.compose.components.layout.CheckInfo
+import com.josh.compose.components.layout.MyCheckbox
+import com.josh.compose.components.layout.MyCheckboxWithText
+import com.josh.compose.components.layout.MyCheckboxWithTextAdvanced
+import com.josh.compose.components.layout.MyRadioButton
+import com.josh.compose.components.layout.MyRadioButtonList
+import com.josh.compose.components.layout.MySwitch
+import com.josh.compose.components.layout.MyTriStatusCheckBox
+import com.josh.compose.components.layout.getCheckboxListOfIngredients
 import com.josh.compose.ui.theme.BasicComposeAppTheme
 
 class MainActivity : ComponentActivity() {
@@ -54,8 +63,39 @@ class MainActivity : ComponentActivity() {
                     Column( modifier = Modifier.fillMaxSize()) {
                         MySpacer(30)
 
+                        var selected by rememberSaveable { mutableStateOf("Beef") }
+                        MyRadioButtonList(selected) { selected = it }
+
+                        val ingredients = listOf("Bacon", "Cheese", "Pickles", "BBQ")
+                        val checkboxListOfIngredients = getCheckboxListOfIngredients(ingredients)
+                        Column() {
+                            Text("15) Selection Control Components")
+
+                            MyRadioButton()
+                            MyTriStatusCheckBox()
+                            checkboxListOfIngredients.forEach { ingredient ->
+                                MyCheckboxWithTextAdvanced(ingredient)
+                            }
+                            MyCheckboxWithText()
+                            MyCheckbox()
+                            MySwitch()
+                        }
+
+                        // 14.64 ProgressBarAdvanced
+                        // MyProgressBarAdvanced()
+                        // 14.63 ProgressBar  , circular/linear
+                        // MyProgressBar()
+
+                        /*
+                        // 13.62
+                        MyIcon()
+                        // 13.60, 13.61
+                        MyImage()
+                        MyAdvancedImage()
+
                         // 12.57
                         MyButtonExample()
+                         */
 
                         // 11.55 State Hoisting
                         // var myText by rememberSaveable { mutableStateOf("") }
@@ -101,6 +141,75 @@ fun DefaultPreview(){
     BasicComposeAppTheme {
         MyComplexLayout()
     }
+}
+
+
+
+// 13.64
+@Composable
+fun MyProgressBarAdvanced() {
+    var progress by rememberSaveable { mutableStateOf(0f) }
+    Column(Modifier.fillMaxSize(),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Text("12) Progressbar Component")
+        CircularProgressIndicator(
+            modifier = Modifier.padding(24.dp),
+            progress = { progress },
+        )
+        LinearProgressIndicator(
+            modifier = Modifier.padding(24.dp),
+            progress = { progress },
+        )
+        Row {
+            Button(modifier = Modifier.padding(24.dp),
+                onClick = {
+                if (progress < 1) {progress += 0.1f}
+            }) {
+                Text("Increase")
+            }
+            Button(modifier = Modifier.padding(24.dp),
+                onClick = {
+                if (progress > 0) {progress -= 0.1f}
+            }) {
+                Text("Decrease")
+            }
+        }
+    }
+}
+
+// 13.63
+@Composable
+fun MyProgressBar() {
+    var showLoading by rememberSaveable { mutableStateOf(false) }
+    Column(Modifier
+        .padding(24.dp)
+        .fillMaxSize(),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally) {
+        if(showLoading) {
+            CircularProgressIndicator(color = Green, strokeWidth = 6.dp)
+            LinearProgressIndicator(
+                modifier = Modifier.padding(24.dp),
+                color = Green,
+                trackColor = DarkGray
+            )
+        }
+        Button( onClick = {showLoading = !showLoading}) {
+            Text("Load Profile")
+        }
+    }
+}
+
+// 13.62
+@Composable
+fun MyIcon() {
+    Icon(
+        imageVector = Icons.Rounded.Star, //.BunchOfIcons
+        contentDescription = "Icono",
+        tint = Red
+    )
 }
 
 // 8.48
