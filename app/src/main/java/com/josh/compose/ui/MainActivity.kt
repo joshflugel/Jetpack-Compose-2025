@@ -2,6 +2,7 @@ package com.josh.compose.ui
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -42,16 +43,19 @@ import androidx.compose.ui.graphics.Color.Companion.Red
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.josh.compose.components.layout.CheckInfo
+import com.josh.compose.components.layout.MyAlertDialog
 import com.josh.compose.components.layout.MyBadgeBox
 import com.josh.compose.components.layout.MyCard
 import com.josh.compose.components.layout.MyCheckbox
 import com.josh.compose.components.layout.MyCheckboxWithText
 import com.josh.compose.components.layout.MyCheckboxWithTextAdvanced
+import com.josh.compose.components.layout.MyCustomDialog
 import com.josh.compose.components.layout.MyDivider
 import com.josh.compose.components.layout.MyDropdownMenu
 import com.josh.compose.components.layout.MyRadioButton
 import com.josh.compose.components.layout.MyRadioButtonList
 import com.josh.compose.components.layout.MyRangeSlider
+import com.josh.compose.components.layout.MySimpleCustomDialog
 import com.josh.compose.components.layout.MySliderAdvanced
 import com.josh.compose.components.layout.MySliderBasic
 import com.josh.compose.ui.theme.BasicComposeAppTheme
@@ -64,13 +68,46 @@ class MainActivity : ComponentActivity() {
         setContent {
             BasicComposeAppTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+
+                    var show by rememberSaveable { mutableStateOf(false) }
+                    Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+                        Text("18) AlertDialog (Material3)")
+
+                        Button(onClick = { show = true}) {
+                            Text("Show Material3 AlertDialog")
+                        }
+
+                        MySimpleCustomDialog(
+                            show = show,
+                            onDismiss = { show = false}
+                        )
+
+                        MyCustomDialog(
+                            show = show,
+                            onDismiss = { show = false }
+                        )
+                        /*MyAlertDialog(
+                            //show,
+                            false,
+                            onDismiss = {
+                                show = false
+                                Log.i("joshtag", "AlertDialog: CONFIRM")
+                                        },
+                            onConfirm = { Log.i("joshtag", "AlertDialog: CONFIRM") }) */
+                    }
+
                     Column( modifier = Modifier.fillMaxSize()) {
                         MySpacer(45)
 
+
+
+
+                        /*
                         Text("17) Slider Component")
                         MyRangeSlider()
                         MySliderAdvanced()
                         MySliderBasic()
+                         */
 
                         /*
                         Text("16) Other Components")  // 16) Other Components
