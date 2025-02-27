@@ -1,5 +1,6 @@
 package com.josh.compose.components.layout
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -32,29 +33,45 @@ fun MyRadioButtonList(name: String, onItemSelected:(String) -> Unit) {
     Column(Modifier.fillMaxWidth()) {
         Row(verticalAlignment = Alignment.CenterVertically) {
             val title = "Beef"
-            RadioButton( name == title, onClick = { onItemSelected(title) })
-            Text(title)
+            RadioButtonDarkRow(name == title, onClick = {onItemSelected(title)})
+            TextDark(title)
         }
         Row(verticalAlignment = Alignment.CenterVertically) {
             val title = "Chicken"
-            RadioButton(name == title, onClick = { onItemSelected(title) })
-            Text(title)
+           RadioButtonDarkRow(name == title, onClick = {onItemSelected(title)})
+            TextDark(title)
         }
         Row(verticalAlignment = Alignment.CenterVertically) {
             val title = "BBQ Ribs"
-            RadioButton(name == title, onClick = { onItemSelected(title) })
-            Text(title)
+            RadioButtonDarkRow(name == title, onClick = {onItemSelected(title)})
+            TextDark(title)
         }
         Row(verticalAlignment = Alignment.CenterVertically) {
             val title = "Shrimp"
-            RadioButton(name == title, onClick = { onItemSelected(title) })
-            Text(title)
+            RadioButtonDarkRow(name == title, onClick = {onItemSelected(title)})
+            TextDark(title)
         }
+
     }
 }
 
 @Composable
-fun MyRadioButton() {
+fun TextDark(title: String) {
+    Text(title, color = Color.DarkGray)
+}
+@Composable
+fun RadioButtonDarkRow(selected: Boolean, onClick: () -> Unit) {
+    RadioButton(
+        selected,
+        onClick = { onClick() },
+        colors = RadioButtonDefaults.colors(
+            selectedColor = Color.Black,
+            unselectedColor = Color.DarkGray.copy(alpha = 0.8f)
+        ))
+}
+
+@Composable
+fun MyRadioButton(status: String, function: () -> Unit) {
     Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
         RadioButton(
             selected = false, onClick = { },

@@ -49,6 +49,7 @@ import com.josh.compose.components.layout.MyCard
 import com.josh.compose.components.layout.MyCheckbox
 import com.josh.compose.components.layout.MyCheckboxWithText
 import com.josh.compose.components.layout.MyCheckboxWithTextAdvanced
+import com.josh.compose.components.layout.MyConfirmationDialog
 import com.josh.compose.components.layout.MyCustomDialog
 import com.josh.compose.components.layout.MyDivider
 import com.josh.compose.components.layout.MyDropdownMenu
@@ -76,7 +77,9 @@ class MainActivity : ComponentActivity() {
                         Button(onClick = { show = true}) {
                             Text("Show Material3 AlertDialog")
                         }
+                        MyConfirmationDialog(show, {show = false}) { }
 
+                        /*
                         MySimpleCustomDialog(
                             show = show,
                             onDismiss = { show = false}
@@ -86,6 +89,7 @@ class MainActivity : ComponentActivity() {
                             show = show,
                             onDismiss = { show = false }
                         )
+                         */
                         /*MyAlertDialog(
                             //show,
                             false,
