@@ -2,7 +2,6 @@ package com.josh.compose.ui
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -42,24 +41,12 @@ import androidx.compose.ui.graphics.Color.Companion.Green
 import androidx.compose.ui.graphics.Color.Companion.Red
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.josh.compose.components.layout.CheckInfo
-import com.josh.compose.components.layout.MyAlertDialog
-import com.josh.compose.components.layout.MyBadgeBox
-import com.josh.compose.components.layout.MyCard
-import com.josh.compose.components.layout.MyCheckbox
-import com.josh.compose.components.layout.MyCheckboxWithText
-import com.josh.compose.components.layout.MyCheckboxWithTextAdvanced
+import com.josh.compose.components.layout.GuitarGridView
+import com.josh.compose.components.layout.GuitarView
 import com.josh.compose.components.layout.MyConfirmationDialog
-import com.josh.compose.components.layout.MyCustomDialog
-import com.josh.compose.components.layout.MyDivider
-import com.josh.compose.components.layout.MyDropdownMenu
-import com.josh.compose.components.layout.MyRadioButton
-import com.josh.compose.components.layout.MyRadioButtonList
-import com.josh.compose.components.layout.MyRangeSlider
 import com.josh.compose.components.layout.MySimpleCustomDialog
-import com.josh.compose.components.layout.MySliderAdvanced
-import com.josh.compose.components.layout.MySliderBasic
-import com.josh.compose.ui.theme.BasicComposeAppTheme
+import com.josh.compose.components.layout.SimpleRecyclerView
+import com.josh.compose.ui.theme.JetpackComposeExercisesAppTheme
 
 class MainActivity : ComponentActivity() {
     @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
@@ -67,17 +54,26 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            BasicComposeAppTheme {
+            JetpackComposeExercisesAppTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
 
-                    var show by rememberSaveable { mutableStateOf(false) }
-                    Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-                        Text("18) AlertDialog (Material3)")
 
+                    Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+
+                    // 21) RecyclerViews
+                        GuitarGridView()
+                    // GuitarView()
+                    // SimpleRecyclerView()
+
+
+                        /* 18)
+                        Text("18) AlertDialog (Material3)")
+                        var show by rememberSaveable { mutableStateOf(false) }
                         Button(onClick = { show = true}) {
                             Text("Show Material3 AlertDialog")
                         }
                         MyConfirmationDialog(show, {show = false}) { }
+                         */
 
                         /*
                         MySimpleCustomDialog(
@@ -200,7 +196,7 @@ class MainActivity : ComponentActivity() {
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview(){
-    BasicComposeAppTheme {
+    JetpackComposeExercisesAppTheme {
         MyComplexLayout()
     }
 }
@@ -470,7 +466,7 @@ fun MySuperText(name: String){
 
 @Composable
 fun GreetingPreview() {
-    BasicComposeAppTheme {
+    JetpackComposeExercisesAppTheme {
         Greeting("Androidsss")
     }
 }
