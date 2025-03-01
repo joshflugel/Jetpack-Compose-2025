@@ -42,7 +42,9 @@ import androidx.compose.ui.graphics.Color.Companion.Red
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.josh.compose.components.layout.GuitarGridView
+import com.josh.compose.components.layout.GuitarStickyView
 import com.josh.compose.components.layout.GuitarView
+import com.josh.compose.components.layout.GuitarWithSpecialControlsView
 import com.josh.compose.components.layout.MyConfirmationDialog
 import com.josh.compose.components.layout.MySimpleCustomDialog
 import com.josh.compose.components.layout.SimpleRecyclerView
@@ -52,7 +54,7 @@ class MainActivity : ComponentActivity() {
     @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
+        //enableEdgeToEdge()
         setContent {
             JetpackComposeExercisesAppTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
@@ -61,7 +63,9 @@ class MainActivity : ComponentActivity() {
                     Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
 
                     // 21) RecyclerViews
-                        GuitarGridView()
+                        GuitarStickyView()
+                    // GuitarWithSpecialControlsView()
+                    //   GuitarGridView()
                     // GuitarView()
                     // SimpleRecyclerView()
 
