@@ -161,7 +161,6 @@ fun GuitarStickyView() {
                 }
             }
         }
-
     }
 }
 

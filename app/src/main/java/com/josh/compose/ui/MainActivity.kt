@@ -57,6 +57,9 @@ class MainActivity : ComponentActivity() {
         //enableEdgeToEdge()
         setContent {
             JetpackComposeExercisesAppTheme {
+
+                ScaffoldExample()
+                /*
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
 
 
@@ -100,11 +103,9 @@ class MainActivity : ComponentActivity() {
                             onConfirm = { Log.i("joshtag", "AlertDialog: CONFIRM") }) */
                     }
 
+                    /*
                     Column( modifier = Modifier.fillMaxSize()) {
                         MySpacer(45)
-
-
-
 
                         /*
                         Text("17) Slider Component")
@@ -177,6 +178,7 @@ class MainActivity : ComponentActivity() {
                         // MyBox("") //8.35
                         // MySuperText("hey2")  //7.34
                     }
+                     */
                     // MyButtons(Modifier.padding(innerPadding)) //sec6
                     // MyTextFieldParent(Modifier.padding(innerPadding))
                     // MyState2_20(Modifier.padding(innerPadding))
@@ -191,6 +193,7 @@ class MainActivity : ComponentActivity() {
                     // MyColumn(Modifier.padding(innerPadding))
                     // Greeting( name = "Android", modifier = Modifier.padding(innerPadding))
                 }
+                */ //Scaffold
             }
         }
     }
