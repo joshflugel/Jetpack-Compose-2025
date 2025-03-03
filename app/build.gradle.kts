@@ -48,12 +48,17 @@ dependencies {
     implementation(libs.androidx.ui)
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
+
+    implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.material3)
+
 
     // Constraint Layout
     implementation(libs.constraint.layout)
     // 13.62
     implementation(libs.material.icons.extended)
+    // 22.103 Material3 bottomBar
+
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
