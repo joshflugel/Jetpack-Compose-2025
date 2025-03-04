@@ -18,14 +18,17 @@ import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.DrawerValue
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.ExtendedFloatingActionButton
 import androidx.compose.material3.FabPosition
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.LargeFloatingActionButton
 import androidx.compose.material3.ModalNavigationDrawer
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.SmallFloatingActionButton
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
@@ -150,11 +153,26 @@ fun MyFAB() {
     FloatingActionButton(onClick = {}, contentColor = Color.Black, containerColor = Color.Yellow) {
         Icon(imageVector = Icons.Filled.Add, contentDescription = "add")
     }
+   SmallFloatingActionButton(onClick = {}, contentColor = Color.Black, containerColor = Color.Yellow) {
+        Icon(imageVector = Icons.Filled.Add, contentDescription = "add Small Button")
+    }
+    LargeFloatingActionButton(onClick = {}, contentColor = Color.Black, containerColor = Color.Yellow) {
+        Icon(imageVector = Icons.Filled.Add, contentDescription = "add Large Button")
+    }
+    ExtendedFloatingActionButton(onClick = { print("ExtendedFAB" )},
+        contentColor = Color.Black,
+        containerColor = Color.Yellow,
+        text = { Text("Extended FAB")},
+        icon = { Icon(imageVector = Icons.Filled.Add, contentDescription = "add Extended FAB Button") })
+    }
 }
 
 @Composable
 fun MyDrawer(onClose:() -> Unit) {
-    Box(Modifier.fillMaxHeight().wrapContentWidth().background(Color.DarkGray)) {
+    Box(Modifier
+        .fillMaxHeight()
+        .wrapContentWidth()
+        .background(Color.DarkGray)) {
         Column(Modifier.padding(8.dp)) {
             Text(
                 "Guitar Bass", modifier = Modifier

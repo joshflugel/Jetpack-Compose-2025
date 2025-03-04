@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.FilledTonalButton
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
@@ -110,5 +111,19 @@ fun MyButtons(modifier: Modifier) {
             Text("TextButton")
         }
 
+    }
+}
+
+@Composable
+fun MyFilledTonalButton() {
+    FilledTonalButton(onClick = {}) {
+        Text("FilledTonalButton")
+    }
+}
+
+@Composable
+fun MyElevatedTonalButton() {
+    FilledTonalButton(onClick = {}) {
+        Text("ElevatedButton")
     }
 }
