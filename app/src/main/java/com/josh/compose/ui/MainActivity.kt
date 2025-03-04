@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.background
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
@@ -26,7 +25,8 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
 import androidx.compose.material3.LinearProgressIndicator
-import androidx.compose.material3.Scaffold
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -41,13 +41,16 @@ import androidx.compose.ui.graphics.Color.Companion.Green
 import androidx.compose.ui.graphics.Color.Companion.Red
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.josh.compose.components.layout.GuitarGridView
-import com.josh.compose.components.layout.GuitarStickyView
-import com.josh.compose.components.layout.GuitarView
-import com.josh.compose.components.layout.GuitarWithSpecialControlsView
-import com.josh.compose.components.layout.MyConfirmationDialog
-import com.josh.compose.components.layout.MySimpleCustomDialog
-import com.josh.compose.components.layout.SimpleRecyclerView
+import androidx.navigation.NavArgument
+import androidx.navigation.NavType
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
+import com.josh.compose.model.Routes
+import com.josh.compose.model.Routes.Pantalla1
+import com.josh.compose.model.Routes.Pantalla2
+import com.josh.compose.model.Routes.Pantalla3
 import com.josh.compose.ui.theme.JetpackComposeExercisesAppTheme
 
 class MainActivity : ComponentActivity() {
@@ -57,20 +60,56 @@ class MainActivity : ComponentActivity() {
         //enableEdgeToEdge()
         setContent {
             JetpackComposeExercisesAppTheme {
+                // 23 Navigation
+                Surface(
+                    color = MaterialTheme.colorScheme.background
+                ) { // Screens need a unique route name
+                    val navigationController = rememberNavController()
+                    NavHost(
+                        navController = navigationController,
+                        startDestination = Pantalla1.route
+                    ) {
+                        composable(Pantalla1.route) { ScreenCyan(navigationController) }
+                        composable(Pantalla2.route) { ScreenMagenta(navigationController) }
+                        composable(Pantalla3.route) { ScreenRed(navigationController) }
+                        // Slash /{name} works for String parameters, arguments = works for all other Types
+                        composable(
+                            //"pantalla4/{age}", // Basic way
+                            Routes.Pantalla4.route,  // needs parameter, but not here
+                            arguments = listOf(navArgument("age") { type = NavType.IntType })
+                        ) { backStackEntry ->
+                            ScreenGreen(
+                                navigationController,
+                                // backStackEntry.arguments?.getString("name").orEmpty() // for string
+                                backStackEntry.arguments?.getInt("age") ?: 0 // for Int argument
+                            )
+                        }
+                        composable(
+                            Routes.Pantalla5.route,
+                            arguments = listOf(navArgument("name") { defaultValue = "Pepe Default" })
+                        ) { navBackStackEntry ->
+                            ScreenFunf(
+                                navigationController,
+                                navBackStackEntry.arguments?.getString("name")
+                            )
+                        }
+                    }
+                }
 
+                /* //22) Jetpack Components Part2: Scaffold, TopAppbar, SnackBar, FloatingActionButton, ModalDrawer
                 ScaffoldExample()
-                /*
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+                 */
 
 
                     Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
 
                     // 21) RecyclerViews
-                        GuitarStickyView()
-                    // GuitarWithSpecialControlsView()
+                    //   GuitarStickyView()
+                    //   GuitarWithSpecialControlsView()
                     //   GuitarGridView()
-                    // GuitarView()
-                    // SimpleRecyclerView()
+                    //   GuitarView()
+                    //   SimpleRecyclerView()
 
 
                         /* 18)
@@ -192,8 +231,8 @@ class MainActivity : ComponentActivity() {
                     // MyRow(Modifier.padding(innerPadding))
                     // MyColumn(Modifier.padding(innerPadding))
                     // Greeting( name = "Android", modifier = Modifier.padding(innerPadding))
-                }
-                */ //Scaffold
+
+                 //Scaffold
             }
         }
     }
