@@ -164,7 +164,7 @@ fun MyFAB() {
         containerColor = Color.Yellow,
         text = { Text("Extended FAB")},
         icon = { Icon(imageVector = Icons.Filled.Add, contentDescription = "add Extended FAB Button") })
-    }
+
 }
 
 @Composable

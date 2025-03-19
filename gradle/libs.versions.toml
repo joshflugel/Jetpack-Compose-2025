@@ -13,12 +13,16 @@ constraintVersion = "1.1.1"
 composeVersion = "1.3.1"
 composeIconVersion = "1.7.8"
 navigationVersion = "2.8.8"
+uiTestJunit4 = "d1.8.0-rc01"
+uiTestManifest = "1.7.8"
+
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
+
 androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
 androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
 androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
@@ -36,6 +40,9 @@ constraint-layout = {module = "androidx.constraintlayout:constraintlayout-compos
 
 material-icons-extended = {module = "androidx.compose.material:material-icons-extended", version.ref = "composeIconVersion"}
 
+# UI Tests (Compose)
+ui-test-junit4 = { module = "androidx.compose.ui:ui-test-junit4", version.ref = "uiTestJunit4" }
+ui-test-manifest = { module = "androidx.compose.ui:ui-test-manifest", version.ref = "uiTestManifest" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

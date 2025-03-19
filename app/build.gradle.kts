@@ -53,13 +53,11 @@ dependencies {
     implementation(libs.androidx.material3)
     implementation(libs.androidx.navigation.compose)
 
-
     // Constraint Layout
     implementation(libs.constraint.layout)
     // 13.62
     implementation(libs.material.icons.extended)
     // 22.103 Material3 bottomBar
-
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
@@ -68,4 +66,8 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
+    // UI Testing
+    androidTestImplementation(libs.ui.test.junit4)
+    debugImplementation(libs.ui.test.manifest)
 }
